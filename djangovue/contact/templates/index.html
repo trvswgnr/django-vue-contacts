@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Contacts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+	<div id="app">
+		<div class="container">
+			<h1>List of Contacts</h1>
+			<button class="btn" data-toggle="modal" data-target="#addContactModal">ADD CONTACT</button>
+			<input class="search" type="text" placeholder="Search" v-model="search_term">
+			<button class="btn" v-on:click.prevent="getContacts()">Search</button>
+			<div class="contact" v-for="contact in contacts">
+				<div class="contact__id">${contact.contact_id}</div>
+				<div class="contact__name">${contact.contact_name}</div>
+				<div class="contact__email">${contact.contact_email}</div>
+				<button class="btn" v-on:click="getContact(contact.contact_id)">Edit</button>
+				<button class="btn" v-on:click="deleteContact(contact.contact_id)">Delete</button>
+			</div><!-- end for contact in contacts -->
+
+			<!-- 'Add Contact' Modal -->
+			<div class="modal" id="addContactModal" aria-hidden="true">
+				<div class="modal__dialog">
+					<div class="modal__content">
+						<div class="modal__header">
+							<h5 class="modal__title">ADD CONTACT</h5>
+						</div>
+						<form v-on:submit.prevent="addContact()">
+							<div class="modal__body">
+								<label for="contact_name">Contact Name</label>
+								<input
+								type="text"
+								class="form-control"
+								id="contact_name"
+								placeholder="Enter Contact Name"
+								v-model="newContact.contact_name"
+								required="required" >
+
+								<label for="contact_email">Contact Email</label>
+								<textarea
+								class="form-control"
+								id="contact_email"
+								placeholder="Enter Contact Email"
+								v-model="newContact.contact_email"
+								required="required"
+								rows="3"></textarea>
+							</div>
+							<div class="modal__footer">
+								<button type="button" class="btn" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn">Save</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- end add contact modal -->
+
+			<!-- 'Edit Contact' Modal -->
+			<div class="modal" id="editContactModal">
+				<div class="modal__dialog">
+					<div class="modal__content">
+						<div class="modal__header">
+							<h5 class="modal__title">EDIT CONTACT</h5>
+						</div>
+						<form v-on:submit.prevent="updateContact()">
+							<div class="modal__body">
+								<label for="contact_name">Contact Name</label>
+								<input
+								type="text"
+								class="modal__input"
+								id="contact_name"
+								placeholder="Enter Contact Name"
+								v-model="currentContact.contact_name"
+								required="required" >
+
+								<label for="contact_email">Contact Email</label>
+								<textarea
+								  class="modal__input"
+								  id="contact_email"
+								  placeholder="Enter Contact Email"
+								  v-model="currentContact.contact_email"
+								  required="required"
+								  rows="3"></textarea>
+							</div>
+							<div class="modal__footer">
+								<button type="button" class="btn" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn">Save changes</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- end edit contact modal -->
+
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+
+	<script src="{% static 'index.js' %}"></script>
+</body>
+
+</html>
