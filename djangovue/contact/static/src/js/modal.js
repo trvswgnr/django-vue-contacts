@@ -343,6 +343,6 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 // temporary fix for modal acting up
-$(document).on('click', '[data-target="#addContactModal"]', function(){
+$(document).on('click.bs.modal.data-api', '[data-target="#addContactModal"]', function(){
 	$("#addContactModal").modal('show');
 })
