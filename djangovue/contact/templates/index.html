@@ -5,35 +5,36 @@
 	<meta charset="utf-8">
 	<title>Contacts</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'style.css' %}">
+	<link rel="stylesheet" href="{% static 'dist/style.css' %}">
 </head>
 
 <body>
 	<div id="app">
 		<div class="container">
-			<h1>List of Contacts</h1>
-			<button class="btn" data-toggle="modal" data-target="#addContactModal">ADD CONTACT</button>
+			<h1>Contacts</h1>
+			<button class="btn" data-target="#addContactModal">ADD CONTACT</button>
 			<input class="search" type="text" placeholder="Search" v-model="search_term">
 			<button class="btn" v-on:click.prevent="getContacts()">Search</button>
 			<div class="contact" v-for="contact in contacts">
-				<div class="contact__id">${contact.contact_id}</div>
 				<div class="contact__name">${contact.contact_name}</div>
 				<div class="contact__email">${contact.contact_email}</div>
+				<div class="contact__id">${contact.contact_id}</div>
 				<button class="btn" v-on:click="getContact(contact.contact_id)">Edit</button>
 				<button class="btn" v-on:click="deleteContact(contact.contact_id)">Delete</button>
 			</div><!-- end for contact in contacts -->
 
 			<!-- 'Add Contact' Modal -->
-			<div class="modal" id="addContactModal" aria-hidden="true">
-				<div class="modal__dialog">
-					<div class="modal__content">
-						<div class="modal__header">
-							<h5 class="modal__title">ADD CONTACT</h5>
+			<div class="modal" id="addContactModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">ADD CONTACT</h5>
 						</div>
 						<form v-on:submit.prevent="addContact()">
-							<div class="modal__body">
-								<label for="contact_name">Contact Name</label>
+							<div class="modal-body">
+								<label for="contact_name">Name</label>
 								<input
 								type="text"
 								class="form-control"
@@ -42,16 +43,15 @@
 								v-model="newContact.contact_name"
 								required="required" >
 
-								<label for="contact_email">Contact Email</label>
-								<textarea
+								<label for="contact_email">Email</label>
+								<input
 								class="form-control"
 								id="contact_email"
 								placeholder="Enter Contact Email"
 								v-model="newContact.contact_email"
-								required="required"
-								rows="3"></textarea>
+								required="required">
 							</div>
-							<div class="modal__footer">
+							<div class="modal-footer">
 								<button type="button" class="btn" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn">Save</button>
 							</div>
@@ -63,34 +63,33 @@
 
 			<!-- 'Edit Contact' Modal -->
 			<div class="modal" id="editContactModal">
-				<div class="modal__dialog">
-					<div class="modal__content">
-						<div class="modal__header">
-							<h5 class="modal__title">EDIT CONTACT</h5>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">EDIT CONTACT</h5>
 						</div>
 						<form v-on:submit.prevent="updateContact()">
-							<div class="modal__body">
-								<label for="contact_name">Contact Name</label>
+							<div class="modal-body">
+								<label for="contact_name">Name</label>
 								<input
 								type="text"
-								class="modal__input"
+								class="modal-input"
 								id="contact_name"
 								placeholder="Enter Contact Name"
 								v-model="currentContact.contact_name"
 								required="required" >
 
-								<label for="contact_email">Contact Email</label>
-								<textarea
-								  class="modal__input"
+								<label for="contact_email">Email</label>
+								<input
+								  class="modal-input"
 								  id="contact_email"
 								  placeholder="Enter Contact Email"
 								  v-model="currentContact.contact_email"
-								  required="required"
-								  rows="3"></textarea>
+								  required="required">
 							</div>
-							<div class="modal__footer">
+							<div class="modal-footer">
 								<button type="button" class="btn" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn">Save changes</button>
+								<button type="submit" class="btn" data-dismiss="modal">Save changes</button>
 							</div>
 						</form>
 					</div>
@@ -105,8 +104,9 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-	<script src="{% static 'index.js' %}"></script>
+	<script src="{% static 'dist/main.js' %}"></script>
 </body>
 
 </html>
