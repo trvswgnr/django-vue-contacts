@@ -15,9 +15,17 @@
 		<div class="container">
 			<h1>Contacts</h1>
 			<div class="wrapper">
-			<button class="btn" data-target="#addContactModal">Add Contact</button>
-			<input class="search" type="text" placeholder="Search" v-model="search_term">
-			<button class="btn" v-on:click.prevent="getContacts()">Search</button>
+			<div class="grid">
+				<div class="row">
+					<div class="col">
+						<button class="btn btn--secondary" data-target="#addContactModal">Add Contact</button>
+					</div>
+					<div class="col search-wrapper">
+						<input class="search" type="text" placeholder="Search" v-model="search_term">
+						<button class="btn" v-on:click.prevent="getContacts()">Search</button>
+					</div>
+				</div>
+			</div>
 			<div class="contact-wrapper grid">
 				<div class="contact-headers row">
 					<div class="contact-headers__item name col">Name</div>
@@ -30,7 +38,7 @@
 					<div class="contact__item email col">${contact.contact_email}</div>
 					<div class="contact__item id col">${contact.contact_id}</div>
 					<div class="contact__item actions col">
-						<button class="btn edit" v-on:click="deleteContact(contact.contact_id)">Delete</button>
+						<button class="btn btn--danger edit" v-on:click="deleteContact(contact.contact_id)">Delete</button>
 						<button class="btn delete" v-on:click="getContact(contact.contact_id)">Edit</button>
 					</div>
 				</div><!-- end for contact in contacts -->
