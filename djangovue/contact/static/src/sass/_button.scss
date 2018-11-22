@@ -19,6 +19,7 @@ button,
 	transition: background 250ms ease-in-out, transform 150ms ease;
 	-webkit-appearance: none;
 	-moz-appearance: none;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
 
 	&:first-child {
 		margin-left: 0;
@@ -39,8 +40,8 @@ button,
 	}
 
 
-	// secondary color
-	&.btn--secondary {
+	// success color
+	&.btn--success {
 		background: $color__secondary;
 		border: 1px solid $color__secondary;
 

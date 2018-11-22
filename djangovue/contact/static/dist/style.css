@@ -344,7 +344,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background: linear-gradient(10deg, #456c8c 20%, #203240 95%);
+  background: linear-gradient(to top right, #2164ac, #2f8da8, #77e9ed);
   background-size: cover; }
 
 #app {
@@ -545,7 +545,8 @@ button,
   transition: background 250ms ease-in-out, transform 150ms ease;
   transition: background 250ms ease-in-out, transform 150ms ease, -webkit-transform 150ms ease;
   -webkit-appearance: none;
-  -moz-appearance: none; }
+  -moz-appearance: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.12); }
   button:first-child,
   .btn:first-child {
     margin-left: 0; }
@@ -561,22 +562,22 @@ button,
   .btn:active {
     -webkit-transform: scale(0.97);
             transform: scale(0.97); }
-  button.btn--secondary,
-  .btn.btn--secondary {
+  button.btn--success,
+  .btn.btn--success {
     background: #4bdf91;
     border: 1px solid #4bdf91; }
-    button.btn--secondary:hover, button.btn--secondary:focus,
-    .btn.btn--secondary:hover,
-    .btn.btn--secondary:focus {
+    button.btn--success:hover, button.btn--success:focus,
+    .btn.btn--success:hover,
+    .btn.btn--success:focus {
       background: #25d277; }
   button.btn--danger,
   .btn.btn--danger {
-    background: #de4c4c;
-    border: 1px solid #de4c4c; }
+    background: #f44a4a;
+    border: 1px solid #f44a4a; }
     button.btn--danger:hover, button.btn--danger:focus,
     .btn.btn--danger:hover,
     .btn.btn--danger:focus {
-      background: #d12626; }
+      background: #f11a1a; }
 
 /**
 	* Form & Input Styles
