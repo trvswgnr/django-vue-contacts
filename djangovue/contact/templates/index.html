@@ -14,26 +14,36 @@
 	<div id="app">
 		<div class="container">
 			<h1>Contacts</h1>
-			<button class="btn" data-target="#addContactModal">ADD CONTACT</button>
+			<div class="wrapper">
+			<button class="btn" data-target="#addContactModal">Add Contact</button>
 			<input class="search" type="text" placeholder="Search" v-model="search_term">
 			<button class="btn" v-on:click.prevent="getContacts()">Search</button>
-			<div class="contact" v-for="contact in contacts">
-				<div class="contact__name">${contact.contact_name}</div>
-				<div class="contact__email">${contact.contact_email}</div>
-				<div class="contact__id">${contact.contact_id}</div>
-				<button class="btn" v-on:click="getContact(contact.contact_id)">Edit</button>
-				<button class="btn" v-on:click="deleteContact(contact.contact_id)">Delete</button>
-			</div><!-- end for contact in contacts -->
-
+			<div class="contact-wrapper grid">
+				<div class="contact-headers row">
+					<div class="contact-headers__item name col">Name</div>
+					<div class="contact-headers__item email col">Email</div>
+					<div class="contact-headers__item id col">ID</div>
+					<div class="contact-headers__item actions col">Actions</div>
+				</div>
+				<div class="contact row" v-for="contact in contacts">
+					<div class="contact__item name col">${contact.contact_name}</div>
+					<div class="contact__item email col">${contact.contact_email}</div>
+					<div class="contact__item id col">${contact.contact_id}</div>
+					<div class="contact__item actions col">
+						<button class="btn edit" v-on:click="deleteContact(contact.contact_id)">Delete</button>
+						<button class="btn delete" v-on:click="getContact(contact.contact_id)">Edit</button>
+					</div>
+				</div><!-- end for contact in contacts -->
+			</div>
 			<!-- 'Add Contact' Modal -->
 			<div class="modal" id="addContactModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">ADD CONTACT</h5>
+				<div class="modal__dialog">
+					<div class="modal__content">
+						<div class="modal__header">
+							<h5 class="modal__title">ADD CONTACT</h5>
 						</div>
 						<form v-on:submit.prevent="addContact()">
-							<div class="modal-body">
+							<div class="modal__body">
 								<label for="contact_name">Name</label>
 								<input
 								type="text"
@@ -51,7 +61,7 @@
 								v-model="newContact.contact_email"
 								required="required">
 							</div>
-							<div class="modal-footer">
+							<div class="modal__footer">
 								<button type="button" class="btn" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn">Save</button>
 							</div>
@@ -63,17 +73,17 @@
 
 			<!-- 'Edit Contact' Modal -->
 			<div class="modal" id="editContactModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">EDIT CONTACT</h5>
+				<div class="modal__dialog">
+					<div class="modal__content">
+						<div class="modal__header">
+							<h5 class="modal__title">EDIT CONTACT</h5>
 						</div>
 						<form v-on:submit.prevent="updateContact()">
-							<div class="modal-body">
+							<div class="modal__body">
 								<label for="contact_name">Name</label>
 								<input
 								type="text"
-								class="modal-input"
+								class="modal__input"
 								id="contact_name"
 								placeholder="Enter Contact Name"
 								v-model="currentContact.contact_name"
@@ -81,13 +91,13 @@
 
 								<label for="contact_email">Email</label>
 								<input
-								  class="modal-input"
+								  class="modal__input"
 								  id="contact_email"
 								  placeholder="Enter Contact Email"
 								  v-model="currentContact.contact_email"
 								  required="required">
 							</div>
-							<div class="modal-footer">
+							<div class="modal__footer">
 								<button type="button" class="btn" data-dismiss="modal">Close</button>
 								<button type="submit" class="btn" data-dismiss="modal">Save changes</button>
 							</div>
@@ -96,7 +106,7 @@
 				</div>
 			</div>
 			<!-- end edit contact modal -->
-
+			</div>
 		</div>
 	</div>
 
