@@ -6,8 +6,9 @@ $unit: 16px;
 $radius: 3px;
 $color__primary: #3897ff;
 $color__secondary: #4bdf91;
-$color__danger: #de4c4c;
+$color__danger: #f44a4a;
 $gradient: linear-gradient(10deg,#456c8c 20%,#203240 95%);
+$gradient: linear-gradient(to top right, #2164ac, #2f8da8, #77e9ed);
 
 @mixin shadow($depth: 1) {
 	box-shadow: 0px $depth*2px $depth*4px 0 rgba(0, 0, 0, 0.2);
