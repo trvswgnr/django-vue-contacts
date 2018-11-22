@@ -21,15 +21,22 @@
 }
 
 .contact {
-	margin-bottom: 0.7em;
-	padding-bottom: 0.7em;
+	position: relative;
+	z-index: 3;
+	padding: 0.7em;
 	border-bottom: 1px solid #eee;
+	box-shadow: 0 0 0 transparent;
+	transition: box-shadow 0.1s;
+
+	&:hover {
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 -1px 1px rgba(0, 0, 0, 0.1);
+		transition: box-shadow 0.25s;
+	}
 }
 
 .contact-headers {
-	padding: 1em 0 0.5em;
+	padding: 1em 0.7em 0.5em;
 	border-bottom: 1px solid #dedede;
-	margin-bottom: 1em;
 	font-weight: 700;
 }
 
