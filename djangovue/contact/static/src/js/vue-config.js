@@ -41,13 +41,25 @@ new Vue({
 				});
 		},
 		addContact: function () {
-			this.$http.post('/api/contact/', this.newContact)
-				.then((response) => {
-					this.getContacts();
-				})
-				.catch((err) => {
-					console.log(err);
-				});
+			let contacts = this.$data.contacts;
+			let is_match = false;
+			for (let i = 0; i < contacts.length; i++) {
+				if (this.newContact.contact_email === contacts[i].contact_email) {
+					is_match = true;
+				}
+			}
+			if (is_match === false) {
+				this.$http.post('/api/contact/', this.newContact)
+					.then((response) => {
+						this.getContacts();
+						$("#addContactModal").modal('hide');
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+			} else {
+				alert('no duplicate emails allowed');
+			}
 		},
 		updateContact: function () {
 			this.$http.put(`/api/contact/${this.currentContact.contact_id}/`, this.currentContact)
