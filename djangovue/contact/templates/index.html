@@ -21,7 +21,7 @@
 						<button class="btn btn--success" data-target="#addContactModal">Add Contact</button>
 					</div>
 					<div class="col search-wrapper">
-						<input class="search" type="text" placeholder="Search" v-model="search_term">
+						<input class="search" type="text" placeholder="Search" v-model="search_term" v-on:keyup="getContacts()">
 						<button class="btn" v-on:click.prevent="getContacts()">Search</button>
 					</div>
 				</div>
