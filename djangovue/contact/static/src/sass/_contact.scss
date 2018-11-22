@@ -1,0 +1,38 @@
+/**
+	* Contact Object
+	*/
+
+.actions {
+	text-align: center;
+}
+
+.id {
+	text-align: center;
+}
+
+.name {
+	min-width: 80px;
+}
+
+.contact__item,
+.contact-headers__item {
+	width: 25%;
+	align-self: center;
+}
+
+.contact {
+	margin-bottom: 0.7em;
+	padding-bottom: 0.7em;
+	border-bottom: 1px solid #eee;
+}
+
+.contact-headers {
+	padding: 1em 0 0.5em;
+	border-bottom: 1px solid #dedede;
+	margin-bottom: 1em;
+	font-weight: 700;
+}
+
+.search-wrapper {
+	text-align: right;
+}

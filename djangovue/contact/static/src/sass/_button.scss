@@ -1,0 +1,63 @@
+/**
+	* Buttons
+	*/
+
+button,
+.btn {
+	display: inline-block;
+	border: 1px solid $color__primary;
+	margin: 0 0 0 0.3em;
+	padding: 8px 16px;
+	text-decoration: none;
+	background: $color__primary;
+	color: #ffffff;
+	font-size: 0.8em;
+	line-height: 1;
+	cursor: pointer;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background 250ms ease-in-out, transform 150ms ease;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	&:first-child {
+		margin-left: 0;
+	}
+
+	&:hover,
+	&:focus {
+		background: darken($color__primary, 10%);
+	}
+
+	&:focus {
+		outline: 1px solid #fff;
+		outline-offset: -4px;
+	}
+
+	&:active {
+		transform: scale(0.97);
+	}
+
+
+	// secondary color
+	&.btn--secondary {
+		background: $color__secondary;
+		border: 1px solid $color__secondary;
+
+		&:hover,
+		&:focus {
+			background: darken($color__secondary, 10%);
+		}
+	}
+
+	// danger color
+	&.btn--danger {
+		background: $color__danger;
+		border: 1px solid $color__danger;
+
+		&:hover,
+		&:focus {
+			background: darken($color__danger, 10%);
+		}
+	}
+}

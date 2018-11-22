@@ -1,0 +1,14 @@
+///
+// Variables
+////
+
+$unit: 16px;
+$radius: 3px;
+$color__primary: #3897ff;
+$color__secondary: #4bdf91;
+$color__danger: #de4c4c;
+$gradient: linear-gradient(10deg,#456c8c 20%,#203240 95%);
+
+@mixin shadow($depth: 1) {
+	box-shadow: 0px $depth*2px $depth*4px 0 rgba(0, 0, 0, 0.2);
+}

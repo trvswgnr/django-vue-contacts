@@ -1,0 +1,46 @@
+/**
+	* Base Styles
+	*/
+
+html, body {
+	height: 100%;
+}
+
+html {
+	background-color: white;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+	box-sizing: border-box;
+}
+
+body {
+	overflow-x: hidden;
+	background: $gradient;
+	background-size: cover;
+}
+
+#app {
+	position: absolute;
+	width: 100%;
+}
+
+.container {
+	width: 100%;
+	max-width: 60em;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.wrapper {
+	background: white;
+	padding: 2em;
+	padding-bottom: 1em;
+	border-radius: $radius;
+	@include shadow(3);
+}
