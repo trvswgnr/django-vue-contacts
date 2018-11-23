@@ -1,0 +1,28 @@
+/**
+	* Utility & Helper Classes
+	*/
+
+.hidden-sm {
+	@media (max-width: $phone) {
+		display: none;
+	}
+}
+
+.hidden-md {
+	@media (max-width: $tablet) {
+		display: none;
+	}
+}
+
+.visible-lg {
+	@media (min-width: $tablet) {
+		display: block;
+	}
+}
+
+.hidden-lg {
+	display: block;
+	@media (min-width: $tablet) {
+		display: none;
+	}
+}

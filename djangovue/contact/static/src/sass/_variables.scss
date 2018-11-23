@@ -13,3 +13,7 @@ $gradient: linear-gradient(to top right, #2164ac, #2f8da8, #77e9ed);
 @mixin shadow($depth: 1) {
 	box-shadow: 0px $depth*2px $depth*4px 0 rgba(0, 0, 0, 0.2);
 }
+
+$phone: 450px;
+$tablet: 750px;
+$desktop: 992px;

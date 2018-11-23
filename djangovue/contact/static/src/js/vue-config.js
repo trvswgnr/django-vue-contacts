@@ -17,7 +17,10 @@ new Vue({
 		this.getContacts();
 	},
 	methods: {
-		getContacts: function () {
+		getContacts: function (clear = false) {
+			if (clear === true ) {
+				this.search_term = '';
+			}
 			let api_url = '/api/contact/';
 			if (this.search_term !== '' || this.search_term !== null) {
 				api_url = `/api/contact/?search=${this.search_term}`;
@@ -51,14 +54,15 @@ new Vue({
 			if (is_match === false) {
 				this.$http.post('/api/contact/', this.newContact)
 					.then((response) => {
-						this.getContacts();
-						$("#addContactModal").modal('hide');
+						this.getContacts();						$("#addContactModal").modal('hide');
+					this.newContact.contact_email = '';
+					this.newContact.contact_name = '';
 					})
 					.catch((err) => {
 						console.log(err);
 					});
 			} else {
-				alert('no duplicate emails allowed');
+				alert('Email address is already assigned to a contact.');
 			}
 		},
 		updateContact: function () {
@@ -75,6 +79,7 @@ new Vue({
 			this.$http.delete(`/api/contact/${id}/`)
 				.then((response) => {
 					this.getContacts();
+					$("#editContactModal").modal('hide');
 				})
 				.catch((err) => {
 					console.log(err);
