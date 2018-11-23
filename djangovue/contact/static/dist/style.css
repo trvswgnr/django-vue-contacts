@@ -589,6 +589,11 @@ small,
     margin: 0;
     height: 100%;
     left: -100vw; }
+    #addContactModal .modal__dialog {
+      left: 100vw; }
+    #addContactModal.in .modal__dialog {
+      left: 0;
+      transition: 0.2s; }
     .in .modal__dialog {
       left: 0;
       transition: 0.2s; }
@@ -597,7 +602,7 @@ small,
     box-shadow: none;
     height: 100%;
     border-radius: 0; }
-  .modal-header {
+  .modal__header {
     padding: 19px 15px; }
   .modal__input {
     width: 100%; }
