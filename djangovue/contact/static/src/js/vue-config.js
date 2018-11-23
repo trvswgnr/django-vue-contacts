@@ -66,6 +66,7 @@ new Vue({
 				.then((response) => {
 					this.currentContact = response.data;
 					this.getContacts();
+					$("#editContactModal").modal('hide');
 				})
 				.catch((err) => {
 					console.log(err);
