@@ -6,6 +6,7 @@
 	<title>Contacts</title>
 	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'dist/style.css' %}">
 </head>
@@ -14,12 +15,12 @@
 	<div id="app">
 		<div class="container">
 			<header class="header">
-				<button class="btn btn--success header__show-search hidden-lg col" id="showSearch">Search</button>
+				<button style="max-width: 62px;" class="btn btn--transparent header__show-search hidden-lg col" id="showSearch"><i class="fas fa-search fa-lg"></i></button>
 				<h1 class="col">Contacts</h1>
-				<button class="btn btn--success hidden-lg col" data-target="#addContactModal">Add Contact</button>
-							<div class="search-wrapper-mobile is-hidden">
+				<button style="max-width: 62px;" class="btn--transparent hidden-lg col" data-target="#addContactModal"><i class="fas fa-plus fa-lg"></i></button>
+			<div class="search-wrapper-mobile is-hidden">
 				<input class="header__search" type="text" placeholder="Search" v-model="search_term" v-on:keyup="getContacts()">
-				<span class="header__search-close">X</span>
+				<span class="header__search-close small" v-on:click="getContacts(true)">Cancel</span>
 			</div>
 			</header>
 
@@ -59,7 +60,8 @@
 					<div class="modal__dialog">
 						<div class="modal__content">
 							<div class="modal__header">
-								<h5 class="modal__title">ADD CONTACT</h5>
+								<h5 class="modal__title hidden-sm">ADD CONTACT</h5>
+								<span class="link hidden-lg" data-dismiss="modal"><i class="fas fa-caret-left"></i> Contacts</span>
 							</div>
 							<form v-on:submit.prevent="addContact()">
 								<div class="modal__body">
@@ -67,7 +69,7 @@
 										<label for="contact_name">Name</label>
 										<input
 										type="text"
-										class="form-control"
+										class="form-control modal__input"
 										id="contact_name"
 										placeholder="Enter Contact Name"
 										v-model="newContact.contact_name"
@@ -76,7 +78,7 @@
 									<div class="input-group">
 										<label for="contact_email">Email</label>
 										<input
-										class="form-control"
+										class="form-control modal__input"
 										id="contact_email"
 										placeholder="Enter Contact Email"
 										v-model="newContact.contact_email"
@@ -84,8 +86,8 @@
 									</div>
 								</div>
 								<div class="modal__footer">
-									<button type="button" class="btn" data-dismiss="modal">Close</button>
-									<button type="submit" class="btn btn--success">Save</button>
+									<button type="button" class="btn hidden-md" data-dismiss="modal">Close</button>
+									<button id="add_contact" type="submit" class="btn btn--success">Add Contact</button>
 								</div>
 							</form>
 						</div>
@@ -98,7 +100,8 @@
 					<div class="modal__dialog">
 						<div class="modal__content">
 							<div class="modal__header">
-								<h5 class="modal__title">EDIT CONTACT</h5>
+								<h5 class="modal__title hidden-md">EDIT CONTACT</h5>
+								<span class="link" data-dismiss="modal"><i class="fas fa-caret-left"></i> Contacts</span>
 							</div>
 							<form v-on:submit.prevent="updateContact()">
 								<div class="modal__body">
@@ -124,7 +127,7 @@
 								</div>
 								<div class="modal__footer">
 								<a href="#" class="link link--danger small" style="float: left; padding-top: 8px" v-on:click.prevent="deleteContact(currentContact.contact_id)">Delete This Contact</a>
-									<button type="button" class="btn" data-dismiss="modal">Close</button>
+									<button type="button" class="btn hidden-md" data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn--success" data-dismiss="modal" v-on:click.prevent="updateContact()">Save changes</button>
 								</div>
 							</form>
