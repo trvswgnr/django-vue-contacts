@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Contacts</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' />
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	{% load static %}
 	<link rel="stylesheet" href="{% static 'dist/style.css' %}">
@@ -14,14 +14,16 @@
 	<div id="app">
 		<div class="container">
 			<header class="header">
-				<button class="btn btn--success header__show-search" id="showSearch">Search</button>
+<!--				<button class="btn btn--success header__show-search" id="showSearch">Search</button>-->
 				<h1>Contacts</h1>
+<!--
 				<button class="btn btn--success" data-target="#addContactModal">Add Contact</button>
 				<input class="search" type="text" placeholder="Search" v-model="search_term" v-on:keyup="getContacts()">
 				<button class="btn header__search" v-on:click.prevent="getContacts()">Search</button>
+-->
 			</header>
 			<div class="wrapper">
-				<div class="grid">
+				<div class="grid hidden-md">
 					<div class="row">
 						<div class="col">
 							<button class="btn btn--success" data-target="#addContactModal">Add Contact</button>
@@ -40,12 +42,14 @@
 						<div class="contact-headers__item actions col">Actions</div>
 					</div>
 					<div class="contact row" v-for="contact in contacts">
-						<div class="contact__item name col">${contact.contact_name}</div>
-						<div class="contact__item email col">${contact.contact_email}</div>
+						<div class="contact__item name-email"  v-on:click="getContact(contact.contact_id)">
+							<div class="name col">${contact.contact_name}</div>
+							<div class="email col">${contact.contact_email}</div>
+						</div>
 						<div class="contact__item id col">${contact.contact_id}</div>
 						<div class="contact__item actions col">
-							<button class="btn btn--danger edit" v-on:click="deleteContact(contact.contact_id)">Delete</button>
-							<button class="btn delete" v-on:click="getContact(contact.contact_id)">Edit</button>
+							<button class="btn btn--danger delete" v-on:click="deleteContact(contact.contact_id)"></button>
+							<button class="btn edit" v-on:click="getContact(contact.contact_id)">Edit</button>
 						</div>
 					</div><!-- end for contact in contacts -->
 				</div>
@@ -110,10 +114,17 @@
 										placeholder="Enter Contact Email"
 										v-model="currentContact.contact_email"
 										required="required">
+									<input
+										class="modal__input"
+										id="contact_id"
+										placeholder="Enter Contact ID"
+										v-model="currentContact.contact_id"
+										required="required">
 								</div>
 								<div class="modal__footer">
+								<button class="btn btn--danger delete" v-on:click="deleteContact(currentContact.contact_id)"></button>
 									<button type="button" class="btn" data-dismiss="modal">Close</button>
-									<button type="submit" class="btn btn--success" data-dismiss="modal">Save changes</button>
+									<button type="submit" class="btn btn--success" data-dismiss="modal" v-on:click.prevent="updateContact()">Save changes</button>
 								</div>
 							</form>
 						</div>
