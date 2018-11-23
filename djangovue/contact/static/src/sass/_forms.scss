@@ -6,4 +6,61 @@ input {
 	padding: 6px 8px 7px;
 	font-size: 0.8em;
 	border: 1px solid #ddd;
+	-webkit-appearance: none;
+	border-radius: 0;
+
+	@media (max-width: $tablet) {
+		padding: 12px 9px 11px;
+	}
+}
+
+.input-group {
+	margin: 0 0 1em;
+
+	@media (min-width: $tablet) {
+		display: inline-block;
+		margin: 0 1em 0 0;
+	}
+}
+
+label {
+	@media (max-width: $tablet) {
+		display: block;
+		font-size: 0.9em;
+		font-weight: bold;
+		margin-bottom: 0.2em;
+	}
+}
+
+.search-wrapper-mobile {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: white;
+	top: 0;
+	transition: 0.2s;
+
+	&.is-hidden {
+		top: -5em;
+		transition: 0.15s;
+	}
+
+	@media (min-width: $tablet) {
+		display: none;
+	}
+}
+
+.header__search {
+	height: 100%;
+	width: 100%;
+}
+
+.header__search-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding-top: 20px;
+	padding-right: 20px;
+	height: 100%;
+	color: $color__primary;
 }

@@ -2,8 +2,12 @@
 	* Base Styles
 	*/
 
-html, body {
+html,
+body {
 	height: 100%;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+
 }
 
 html {
@@ -24,7 +28,7 @@ body {
 }
 
 #app {
-	position: absolute;
+	position: relative;
 	width: 100%;
 }
 
@@ -35,12 +39,36 @@ body {
 	margin-right: auto;
 	padding-left: 1em;
 	padding-right: 1em;
+
+	@media (max-width: $tablet) {
+		padding: 0;
+	}
 }
 
 .wrapper {
 	background: white;
-	padding: 2em;
-	padding-bottom: 1em;
-	border-radius: $radius;
-	@include shadow(3);
+	padding: 0em;
+	margin-top: 54px;
+
+	@media (min-width: $tablet) {
+		margin-top: 0;
+		margin-bottom: 3em;
+		padding: 2em;
+		padding-bottom: 1em;
+		border-radius: $radius;
+		@include shadow(3);
+	}
+}
+
+.header {
+	position: relative;
+
+	@media (max-width: $tablet) {
+  display: flex;
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+	background: $gradient;
+  top: 0;
+	}
 }
