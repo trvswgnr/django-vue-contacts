@@ -14,14 +14,15 @@
 	<div id="app">
 		<div class="container">
 			<header class="header">
-<!--				<button class="btn btn--success header__show-search" id="showSearch">Search</button>-->
-				<h1>Contacts</h1>
-<!--
-				<button class="btn btn--success" data-target="#addContactModal">Add Contact</button>
-				<input class="search" type="text" placeholder="Search" v-model="search_term" v-on:keyup="getContacts()">
-				<button class="btn header__search" v-on:click.prevent="getContacts()">Search</button>
--->
+				<button class="btn btn--success header__show-search hidden-lg col" id="showSearch">Search</button>
+				<h1 class="col">Contacts</h1>
+				<button class="btn btn--success hidden-lg col" data-target="#addContactModal">Add Contact</button>
+							<div class="search-wrapper-mobile is-hidden">
+				<input class="header__search" type="text" placeholder="Search" v-model="search_term" v-on:keyup="getContacts()">
+				<span class="header__search-close">X</span>
+			</div>
 			</header>
+
 			<div class="wrapper">
 				<div class="grid hidden-md">
 					<div class="row">
@@ -48,7 +49,7 @@
 						</div>
 						<div class="contact__item id col">${contact.contact_id}</div>
 						<div class="contact__item actions col">
-							<button class="btn btn--danger delete" v-on:click="deleteContact(contact.contact_id)"></button>
+							<button class="btn btn--danger delete hidden-md" v-on:click="deleteContact(contact.contact_id)">Delete</button>
 							<button class="btn edit" v-on:click="getContact(contact.contact_id)">Edit</button>
 						</div>
 					</div><!-- end for contact in contacts -->
@@ -62,22 +63,25 @@
 							</div>
 							<form v-on:submit.prevent="addContact()">
 								<div class="modal__body">
-									<label for="contact_name">Name</label>
-									<input
-									type="text"
-									class="form-control"
-									id="contact_name"
-									placeholder="Enter Contact Name"
-									v-model="newContact.contact_name"
-									required="required" >
-
-									<label for="contact_email">Email</label>
-									<input
-									class="form-control"
-									id="contact_email"
-									placeholder="Enter Contact Email"
-									v-model="newContact.contact_email"
-									required="required">
+									<div class="input-group">
+										<label for="contact_name">Name</label>
+										<input
+										type="text"
+										class="form-control"
+										id="contact_name"
+										placeholder="Enter Contact Name"
+										v-model="newContact.contact_name"
+										required="required" >
+									</div>
+									<div class="input-group">
+										<label for="contact_email">Email</label>
+										<input
+										class="form-control"
+										id="contact_email"
+										placeholder="Enter Contact Email"
+										v-model="newContact.contact_email"
+										required="required">
+									</div>
 								</div>
 								<div class="modal__footer">
 									<button type="button" class="btn" data-dismiss="modal">Close</button>
@@ -98,31 +102,28 @@
 							</div>
 							<form v-on:submit.prevent="updateContact()">
 								<div class="modal__body">
-									<label for="contact_name">Name</label>
-									<input
-									type="text"
-									class="modal__input"
-									id="contact_name"
-									placeholder="Enter Contact Name"
-									v-model="currentContact.contact_name"
-									required="required" >
-
-									<label for="contact_email">Email</label>
-									<input
+									<div class="input-group">
+										<label for="contact_name">Name</label>
+										<input
+										type="text"
 										class="modal__input"
-										id="contact_email"
-										placeholder="Enter Contact Email"
-										v-model="currentContact.contact_email"
-										required="required">
-									<input
-										class="modal__input"
-										id="contact_id"
-										placeholder="Enter Contact ID"
-										v-model="currentContact.contact_id"
-										required="required">
+										id="contact_name"
+										placeholder="Enter Contact Name"
+										v-model="currentContact.contact_name"
+										required="required" >
+									</div>
+									<div class="input-group">
+										<label for="contact_email">Email</label>
+										<input
+											class="modal__input"
+											id="contact_email"
+											placeholder="Enter Contact Email"
+											v-model="currentContact.contact_email"
+											required="required">
+									</div>
 								</div>
 								<div class="modal__footer">
-								<button class="btn btn--danger delete" v-on:click="deleteContact(currentContact.contact_id)"></button>
+								<a href="#" class="link link--danger small" style="float: left; padding-top: 8px" v-on:click.prevent="deleteContact(currentContact.contact_id)">Delete This Contact</a>
 									<button type="button" class="btn" data-dismiss="modal">Close</button>
 									<button type="submit" class="btn btn--success" data-dismiss="modal" v-on:click.prevent="updateContact()">Save changes</button>
 								</div>
