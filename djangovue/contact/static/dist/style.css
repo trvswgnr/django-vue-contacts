@@ -583,7 +583,7 @@ button,
 	* Form & Input Styles
 	*/
 input {
-  padding: 6px 16px 7px;
+  padding: 6px 8px 7px;
   font-size: 0.8em;
   border: 1px solid #ddd; }
 
@@ -606,14 +606,19 @@ input {
 
 .contact {
   position: relative;
-  z-index: 3;
+  background: white;
   padding: 0.7em;
   border-bottom: 1px solid #eee;
   box-shadow: 0 0 0 transparent;
-  transition: box-shadow 0.1s; }
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: 0.1s; }
   .contact:hover {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 -1px 1px rgba(0, 0, 0, 0.121569);
-    transition: box-shadow 0.25s; }
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15), 0 -1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-transform: scale(1.02);
+            transform: scale(1.02);
+    z-index: 2;
+    transition: 0.25s; }
 
 .contact-headers {
   padding: 1em 0.7em 0.5em;
