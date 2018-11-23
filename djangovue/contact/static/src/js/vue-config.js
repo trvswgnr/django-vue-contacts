@@ -66,7 +66,6 @@ new Vue({
 				.then((response) => {
 					this.currentContact = response.data;
 					this.getContacts();
-					$("#editContactModal").modal('hide');
 				})
 				.catch((err) => {
 					console.log(err);
@@ -76,6 +75,7 @@ new Vue({
 			this.$http.delete(`/api/contact/${id}/`)
 				.then((response) => {
 					this.getContacts();
+					$("#editContactModal").modal('hide');
 				})
 				.catch((err) => {
 					console.log(err);
