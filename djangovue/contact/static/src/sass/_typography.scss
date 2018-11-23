@@ -12,8 +12,50 @@ body {
 }
 
 h1 {
-	font-size: calc(1.5em + 3vw);
+	font-size: calc(1em + 3vw);
+	font-weight: 300;
 	color: white;
 	text-align: center;
 	padding: 0.75em 1rem;
+	text-shadow: 0.015em 0.015em 0px rgba(0, 0, 0, 0.15);
+	@media (max-width: $tablet) {
+		font-size: 2em;
+		padding: 10px 12px 12px;
+		text-shadow: none;
+	}
+}
+
+a,
+.link {
+	color: $color__primary;
+	transition: 0.1s;
+	text-decoration: none;
+
+	&:visited {
+		color: $color__primary;
+	}
+
+	&:hover,
+	&:active {
+		color: lighten($color__primary, 10%);
+		transition: 0.2s;
+		text-decoration: none;
+	}
+}
+
+.link--danger {
+	color: $color__danger;
+	&:visited {
+		color: $color__danger;
+	}
+
+	&:hover,
+	&:active {
+		color: lighten($color__danger, 10%);
+	}
+}
+
+small,
+.small {
+	font-size: 0.8em;
 }
